@@ -1,17 +1,17 @@
 :root {
-  --ink: #071214;
-  --ink-soft: #132326;
-  --text: #eff8f6;
-  --muted: #a8bbb7;
-  --paper: #f4f1ea;
+  --ink: #081426;
+  --ink-soft: #10233f;
+  --text: #f7fbff;
+  --muted: #9fb5ca;
+  --paper: #eef3f8;
   --paper-strong: #ffffff;
-  --body: #243235;
-  --teal: #24b6ad;
-  --teal-dark: #0d716d;
-  --amber: #d6a351;
-  --clay: #bc6e50;
-  --line: rgba(7, 18, 20, 0.12);
-  --shadow: 0 24px 60px rgba(7, 18, 20, 0.22);
+  --body: #26384b;
+  --teal: #38bdf8;
+  --teal-dark: #0369a1;
+  --amber: #f59e0b;
+  --clay: #fb7185;
+  --line: rgba(8, 20, 38, 0.11);
+  --shadow: 0 24px 60px rgba(8, 20, 38, 0.18);
 }
 
 * {
@@ -28,6 +28,19 @@ body {
   background: var(--paper);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
+}
+
+.scroll-progress {
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--teal), #818cf8);
+  transition: transform 80ms linear;
 }
 
 a {
@@ -60,8 +73,8 @@ a {
 
 .site-header.is-scrolled,
 .site-header.is-open {
-  background: rgba(7, 18, 20, 0.88);
-  border-bottom-color: rgba(36, 182, 173, 0.15); /* Smoothly transitions color instead of adding new border */
+  background: rgba(8, 20, 38, 0.92);
+  border-bottom-color: rgba(56, 189, 248, 0.18);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 10px 30px rgba(3, 11, 12, 0.3); /* Adds a subtle dark shadow for depth and separation */
@@ -149,15 +162,15 @@ a {
 .hero-overlay {
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(7, 18, 20, 0.96) 0%, rgba(7, 18, 20, 0.82) 36%, rgba(7, 18, 20, 0.26) 72%),
-    linear-gradient(180deg, rgba(7, 18, 20, 0.28) 0%, rgba(7, 18, 20, 0.7) 100%);
+    linear-gradient(90deg, rgba(8, 20, 38, 0.98) 0%, rgba(8, 20, 38, 0.86) 36%, rgba(3, 105, 161, 0.24) 72%),
+    linear-gradient(180deg, rgba(8, 20, 38, 0.2) 0%, rgba(8, 20, 38, 0.82) 100%);
 }
 
 .hero-content {
   width: min(650px, calc(100% - 40px));
   margin-left: clamp(20px, 7vw, 96px);
   padding: clamp(30px, 5vw, 48px);
-  background: rgba(7, 18, 20, 0.55);
+  background: rgba(8, 20, 38, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-left: 4px solid var(--teal);
   border-radius: 12px;
@@ -166,6 +179,18 @@ a {
   box-shadow: 
     0 24px 60px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: hero-enter 800ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .eyebrow {
@@ -217,7 +242,8 @@ h1 {
 
 .button.primary {
   background: var(--teal);
-  color: #031314;
+  color: #061827;
+  box-shadow: 0 12px 28px rgba(56, 189, 248, 0.22);
 }
 
 .button.primary:hover,
@@ -247,7 +273,7 @@ h1 {
 .summary-item {
   min-height: 128px;
   padding: 30px clamp(22px, 5vw, 54px);
-  background: #fffbf3;
+  background: #fafdff;
 }
 
 .summary-item strong,
@@ -312,6 +338,7 @@ h1 {
   background: var(--paper-strong);
   padding: 30px;
   border: 1px solid var(--line);
+  border-top: 3px solid transparent;
   box-shadow: 0 8px 30px rgba(7, 18, 20, 0.04);
   transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
   min-height: 280px;
@@ -320,6 +347,7 @@ h1 {
 .project-card:hover {
   transform: translateY(-4px);
   border-color: var(--teal);
+  border-top-color: var(--teal);
   box-shadow: 0 16px 40px rgba(7, 18, 20, 0.09);
 }
 
@@ -385,11 +413,11 @@ h1 {
 }
 
 .services-section {
-  background: #e8f3f0;
+  background: #dfeaf5;
 }
 
 .github-section {
-  background: #f7fbfa;
+  background: #edf5fb;
   border-bottom: 1px solid var(--line);
 }
 
@@ -531,7 +559,7 @@ h1 {
 }
 
 .experience-section {
-  background: var(--ink);
+  background: linear-gradient(135deg, #081426 0%, #0b3154 100%);
 }
 
 .experience-section .section-heading h2 {
@@ -572,7 +600,7 @@ h1 {
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
   gap: clamp(34px, 6vw, 90px);
   padding: clamp(74px, 9vw, 126px) clamp(20px, 6vw, 86px);
-  background: #fffbf3;
+  background: #fafdff;
 }
 
 .contact-content p:last-child {

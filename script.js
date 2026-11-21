@@ -2,9 +2,15 @@ const header = document.querySelector("[data-header]");
 const toggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const year = document.querySelector("[data-year]");
+const scrollProgress = document.querySelector("[data-scroll-progress]");
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 12);
+  if (scrollProgress) {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+    scrollProgress.style.transform = `scaleX(${progress})`;
+  }
 }
 
 function closeMenu() {
