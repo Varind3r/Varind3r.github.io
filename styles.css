@@ -388,6 +388,82 @@ h1 {
   background: #e8f3f0;
 }
 
+.github-section {
+  background: #f7fbfa;
+  border-bottom: 1px solid var(--line);
+}
+
+.github-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.github-card {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  background: var(--paper-strong);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--teal);
+  box-shadow: 0 12px 30px rgba(7, 18, 20, 0.07);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.github-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 36px rgba(7, 18, 20, 0.12);
+}
+
+.github-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--teal-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.github-card h3 {
+  margin: 16px 0 8px;
+  color: var(--ink);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.github-card p {
+  flex-grow: 1;
+  margin: 0 0 18px;
+  color: #536467;
+}
+
+.github-card a {
+  color: var(--teal-dark);
+  font-weight: 800;
+}
+
+.github-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--body);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 650ms ease var(--reveal-delay, 0ms),
+    transform 650ms ease var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -550,6 +626,7 @@ h1 {
 @media (max-width: 920px) {
   .summary-band,
   .projects-grid,
+  .github-grid,
   .service-grid,
   .skills-layout,
   .contact-section {
@@ -626,5 +703,25 @@ h1 {
 
   .site-footer {
     display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
