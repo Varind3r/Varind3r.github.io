@@ -67,6 +67,7 @@ async function loadGitHubRepositories() {
 
     const repositories = await response.json();
     const visibleRepositories = repositories
+      .filter((repository) => ["Quiz-Plugin", "Upcoming-Calendar-Events"].includes(repository.name))
       .filter((repository) => !repository.fork && !repository.archived)
       .sort((a, b) => b.stargazers_count - a.stargazers_count)
       .slice(0, 6);
